@@ -1,6 +1,6 @@
 const excelFileUrl = "./data/Empire%20Carpet%20Care%20-%20Unit%20Renovation%20Tracker.xlsx";
 
-const sheetName = "RenovationTracker";
+const sheetName = "Sheet1";
 
 async function loadExcelData() {
     try {
