@@ -26,6 +26,9 @@ async function loadExcelData() {
 function populateTable(data) {
     const tbody = document.querySelector("#excelBody");
     tbody.innerHTML = "";
+    // Sort rows by UnitNumber
+data.sort((a, b) => Number(a.UnitNumber) - Number(b.UnitNumber));
+
 
     data.forEach(row => {
         const tr = document.createElement("tr");
