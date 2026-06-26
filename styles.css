@@ -43,3 +43,6 @@ th, td {
 td[contenteditable="true"] {
     background: #fffdf0;
 }
+.status-not-started { background-color: #ffe5e5; }
+.status-in-progress { background-color: #fff7cc; }
+.status-complete { background-color: #d9ffd9; }
