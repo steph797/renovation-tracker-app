@@ -26,21 +26,32 @@ async function loadExcelData() {
 function populateTable(data) {
     const tbody = document.querySelector("#excelBody");
     tbody.innerHTML = "";
-    // Sort rows by UnitNumber
-data.sort((a, b) => Number(a.UnitNumber) - Number(b.UnitNumber));
 
+    // ⭐ Sort rows by UnitNumber
+    data.sort((a, b) => Number(a.UnitNumber) - Number(b.UnitNumber));
 
     data.forEach(row => {
         const tr = document.createElement("tr");
+
+        // ⭐ Color coding based on Status
+        if (row.Status) {
+            const status = row.Status.toLowerCase();
+            if (status.includes("not")) tr.classList.add("status-not-started");
+            else if (status.includes("progress")) tr.classList.add("status-in-progress");
+            else if (status.includes("complete")) tr.classList.add("status-complete");
+        }
+
         Object.keys(row).forEach(key => {
             const td = document.createElement("td");
             td.contentEditable = true;
             td.innerText = row[key] ?? "";
             tr.appendChild(td);
         });
+
         tbody.appendChild(tr);
     });
 }
+
 
 
 async function saveExcelData() {
