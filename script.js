@@ -24,7 +24,7 @@ async function loadExcelData() {
 }
 
 function populateTable(data) {
-    const tbody = document.querySelector("#unitsTable tbody");
+    const tbody = document.querySelector("#excelBody");
     tbody.innerHTML = "";
 
     data.forEach(row => {
@@ -38,6 +38,7 @@ function populateTable(data) {
         tbody.appendChild(tr);
     });
 }
+
 
 async function saveExcelData() {
     const rows = [];
