@@ -1,5 +1,4 @@
 const excelFileUrl = "./data/Empire%20Carpet%20Care%20-%20Unit%20Renovation%20Tracker.xlsx";
-
 const sheetName = "Sheet1";
 
 async function loadExcelData() {
@@ -27,13 +26,13 @@ function populateTable(data) {
     const tbody = document.querySelector("#excelBody");
     tbody.innerHTML = "";
 
-    // ⭐ Sort rows by UnitNumber
+    // Sort rows by UnitNumber
     data.sort((a, b) => Number(a.UnitNumber) - Number(b.UnitNumber));
 
     data.forEach(row => {
         const tr = document.createElement("tr");
 
-        // ⭐ Color coding based on Status
+        // Color coding based on Status
         if (row.Status) {
             const status = row.Status.toLowerCase();
             if (status.includes("not")) tr.classList.add("status-not-started");
@@ -52,11 +51,17 @@ function populateTable(data) {
     });
 }
 
-
+// Auto-calc status
+function computeStatus(cells) {
+    const steps = cells.slice(2, 9).map(td => td.innerText.trim());
+    if (steps.every(s => s === "")) return "Not Started";
+    if (steps.every(s => s !== "")) return "Complete";
+    return "In Progress";
+}
 
 async function saveExcelData() {
     const rows = [];
-    const trs = document.querySelectorAll("#unitsTable tbody tr");
+    const trs = document.querySelectorAll("#excelBody tr");
 
     trs.forEach(tr => {
         const cells = tr.querySelectorAll("td");
@@ -70,7 +75,7 @@ async function saveExcelData() {
             Step5_CabinetInstall: cells[6].innerText,
             Step6_PlumberV2: cells[7].innerText,
             Step7_ShowerPanels_GrabBars: cells[8].innerText,
-            Status: cells[9].innerText,
+            Status: computeStatus(cells),
             Notes: cells[10].innerText,
             LastUpdatedBy: "Stephanie",
             LastUpdatedAt: new Date().toLocaleString()
@@ -91,5 +96,49 @@ async function saveExcelData() {
     a.click();
 }
 
+// Add new unit
+document.getElementById("addUnitBtn").addEventListener("click", () => {
+    const tbody = document.querySelector("#excelBody");
+    const tr = document.createElement("tr");
+
+    for (let i = 0; i < 13; i++) {
+        const td = document.createElement("td");
+        td.contentEditable = true;
+        tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+});
+
+// Filters
+document.getElementById("floorFilter").addEventListener("change", applyFilters);
+document.getElementById("statusFilter").addEventListener("change", applyFilters);
+
+function applyFilters() {
+    const floor = document.getElementById("floorFilter").value;
+    const status = document.getElementById("statusFilter").value.toLowerCase();
+
+    document.querySelectorAll("#excelBody tr").forEach(tr => {
+        const cells = tr.querySelectorAll("td");
+        const rowFloor = cells[1].innerText;
+        const rowStatus = cells[9].innerText.toLowerCase();
+
+        let show = true;
+
+        if (floor && rowFloor !== floor) show = false;
+        if (status && !rowStatus.includes(status)) show = false;
+
+        tr.style.display = show ? "" : "none";
+    });
+}
+
+// Collapsible legend
+function toggleLegend() {
+    document.querySelectorAll(".legend-row").forEach(row => {
+        row.style.display = row.style.display === "none" ? "" : "none";
+    });
+}
+
+// Buttons
 document.getElementById("loadDataBtn").addEventListener("click", loadExcelData);
 document.getElementById("saveDataBtn").addEventListener("click", saveExcelData);
