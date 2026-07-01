@@ -16,8 +16,7 @@ const SHEET_NAME = "Sheet1"; // Change if your tab name is different
 // =========================
 
 async function loadData() {
-    const url =
-        `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
 
     const res = await fetch(url);
     const data = await res.json();
