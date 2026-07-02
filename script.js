@@ -118,6 +118,11 @@ function collectTableData() {
 // BUTTON EVENT LISTENERS
 // =========================
 
+// =========================
+// BUTTON EVENT LISTENERS
+// =========================
+
 document.getElementById("loadDataBtn").addEventListener("click", loadData);
 document.getElementById("saveDataBtn").addEventListener("click", saveData);
 document.getElementById("addUnitBtn").addEventListener("click", addUnitRow);
+
