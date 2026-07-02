@@ -64,6 +64,7 @@ async function saveData(rows) {
 // =========================
 
 function renderTable(rows) {
+    confunction renderTable(rows) {
     const tableBody = document.querySelector("#unitsTable tbody");
 
     rows.forEach(row => {
@@ -79,6 +80,7 @@ function renderTable(rows) {
         tableBody.appendChild(tr);
     });
 }
+
 
 
 // =========================
