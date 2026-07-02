@@ -65,7 +65,7 @@ async function saveData(rows) {
 // =========================
 
 function renderTable(rows) {
-    confunction renderTable(rows) {
+ function renderTable(rows) {
     const tableBody = document.querySelector("#unitsTable tbody");
 
     rows.forEach(row => {
@@ -81,45 +81,6 @@ function renderTable(rows) {
         tableBody.appendChild(tr);
     });
 }
-
-
-
-// =========================
-// COLLECT TABLE DATA
-// =========================
-
-function collectTableData() {
-    const rows = [];
-
-    document.querySelectorAll("#unitsTable tbody tr").forEach(tr => {
-        const cells = Array.from(tr.querySelectorAll("td")).map(td =>
-            td.textContent.trim()
-        );
-        rows.push(cells);
-    });
-
-    return rows;
-}
-
-// =========================
-// BUTTON HANDLERS
-// =========================
-
-document.getElementById("loadDataBtn").addEventListener("click", async () => {
-    const rows = await loadData();
-    renderTable(rows);
-});
-
-
-document.getElementById("saveDataBtn").addEventListener("click", async () => {
-    const rows = collectTableData();
-    await saveData(rows);
-});
-
-document.getElementById("addUnitBtn").addEventListener("click", () => {
-    addUnitRow();
-});
-
 function addUnitRow() {
     const tableBody = document.querySelector("#unitsTable tbody");
 
@@ -140,3 +101,4 @@ function addUnitRow() {
 
     tableBody.appendChild(newRow);
 }
+   
