@@ -64,8 +64,8 @@ async function saveData(rows) {
 // =========================
 
 function renderTable(rows) {
-    const tbody = document.querySelector("#unitsTable tbody");
-    tbody.innerHTML = "";
+    const tableBody = document.querySelector("#unitsTable tbody");
+
 
     rows.forEach(row => {
         const tr = document.createElement("tr");
