@@ -29,26 +29,23 @@ async function loadData() {
 // =========================
 
 async function saveData() {
-    const rows = collectTableData();
+    const rows = getTableData();
 
-    const body = { values: rows };
-
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}!A2:Z999?valueInputOption=RAW&key=${API_KEY}`;
-
-    const res = await fetch(url, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzvHQ-KB0Ej6gTcKS1Lezj7EaSSZ_DGeRWLT8ItW2uU_aBhLw001CTT9uToMmv33KK2/exec", {
+        method: "POST",
+        body: JSON.stringify(rows),
+        headers: {
+            "Content-Type": "application/json"
+        }
     });
 
-    if (!res.ok) {
-        console.error(await res.text());
-        alert("Error saving.");
-        return;
+    if (response.ok) {
+        alert("Saved!");
+    } else {
+        alert("Save failed.");
     }
-
-    alert("Saved!");
 }
+
 
 // =========================
 // RENDER TABLE
