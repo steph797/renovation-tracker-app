@@ -102,15 +102,19 @@ function collectTableData() {
 // BUTTON HANDLERS
 // =========================
 
-document . getElementById ( "loadBtn" ) . addEventListener ( "click" , async ( ) => {
-    const rows = await loadData ( ) ;
-    renderTable ( rows ) ;
-} ) ;
+document.getElementById("loadDataBtn").addEventListener("click", async () => {
+    const rows = await loadData();
+    renderTable(rows);
+});
 
-document . getElementById ( "saveBtn" ) . addEventListener ( "click" , async ( ) => {
-    const rows = collectTableData ( ) ;
-    await saveData ( rows ) ;
-} ) ;
+document.getElementById("saveDataBtn").addEventListener("click", async () => {
+    const rows = collectTableData();
+    await saveData(rows);
+});
+
+document.getElementById("addUnitBtn").addEventListener("click", () => {
+    addUnitRow();
+});
 
 
 
