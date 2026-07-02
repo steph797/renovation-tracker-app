@@ -107,6 +107,7 @@ document.getElementById("loadDataBtn").addEventListener("click", async () => {
     renderTable(rows);
 });
 
+
 document.getElementById("saveDataBtn").addEventListener("click", async () => {
     const rows = collectTableData();
     await saveData(rows);
@@ -115,6 +116,7 @@ document.getElementById("saveDataBtn").addEventListener("click", async () => {
 document.getElementById("addUnitBtn").addEventListener("click", () => {
     addUnitRow();
 });
+
 
 
 
