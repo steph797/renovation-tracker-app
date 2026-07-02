@@ -118,7 +118,7 @@ document.getElementById("addUnitBtn").addEventListener("click", () => {
 });
 
 function addUnitRow() {
-    const tableBody = document.querySelector("#unitTable tbody");
+    const tableBody = document.querySelector("#unitsTable tbody");
 
     const newRow = document.createElement("tr");
 
@@ -137,26 +137,3 @@ function addUnitRow() {
 
     tableBody.appendChild(newRow);
 }
-
-function addUnitRow() {
-    const tableBody = document.querySelector("#unitTable tbody");
-
-    const newRow = document.createElement("tr");
-
-    newRow.innerHTML = `
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-    `;
-
-    tableBody.appendChild(newRow);
-}
-
-
