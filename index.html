@@ -21,36 +21,37 @@
 
     </div>
 
-    <table id="unitsTable">
-        <thead>
-            <tr>
-                <th>UnitNumber</th>
-                <th>Floor</th>
-                <th>Step1_Demo</th>
-                <th>Step2_PlumberVisit1</th>
-                <th>Step3_RedGuard_PanCut_BackerBoard</th>
-                <th>Step4_ConcreteFill</th>
-                <th>Step5_CabinetInstall</th>
-                <th>Step6_PlumberV2</th>
-                <th>Step7_ShowerPanels_GrabBars</th>
-                <th>Status</th>
-                <th>Notes</th>
-                <th>LastUpdatedBy</th>
-                <th>LastUpdatedAt</th>
-            </tr>
-        </thead>
-        <tbody id="excelBody">
-    <!-- Excel rows will be inserted here -->
-</tbody>
+ <table id="unitsTable">
+    <thead>
+        <tr>
+            <th>UnitNumber</th>
+            <th>Floor</th>
+            <th>Step1_Demo</th>
+            <th>Step2_PlumberVisit1</th>
+            <th>Step3_RedGuard_PanCut_BackerBoard</th>
+            <th>Step4_ConcreteFill</th>
+            <th>Step5_CabinetInstall</th>
+            <th>Step6_PlumberV2</th>
+            <th>Step7_ShowerPanels_GrabBars</th>
+            <th>Status</th>
+            <th>Notes</th>
+            <th>LastUpdatedBy</th>
+            <th>LastUpdatedAt</th>
+        </tr>
+    </thead>
 
-<tbody id="legendBody">
-    <tr><td colspan="12"><strong>Legend & Notes</strong></td></tr>
-    <tr><td colspan="12">1. Ground floor units have special concrete fill requirements.</td></tr>
-    <tr><td colspan="12">2. Status column is auto-managed based on step completion.</td></tr>
-    <tr><td colspan="12">3. LastUpdatedBy and LastUpdatedAt are written automatically.</td></tr>
-</tbody>
+    <tbody id="excelBody">
+        <!-- Excel rows will be inserted here -->
+    </tbody>
 
-    </table>
+    <tfoot id="legendBody">
+        <tr><td colspan="13"><strong>Legend & Notes</strong></td></tr>
+        <tr><td colspan="13">1. Ground floor units have special concrete fill requirements.</td></tr>
+        <tr><td colspan="13">2. Status column is auto-managed based on step completion.</td></tr>
+        <tr><td colspan="13">3. LastUpdatedBy and LastUpdatedAt are written automatically.</td></tr>
+    </tfoot>
+</table>
+
 
     <script src="script.js"></script>
 </body>
